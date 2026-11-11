@@ -5,8 +5,19 @@ struct Point {
 }
 
 #[derive(Debug)]
+struct Rectangle {
+    width: i32,
+    height: i32,
+}
+
+#[derive(Debug)]
 enum Message {
     // TODO: Define the different variants used below.
+    Resize(Rectangle),
+    Move(Point),
+    Echo(String),
+    ChangeColor((u8, u8, u8)),
+    Quit,
 }
 
 impl Message {
@@ -17,13 +28,10 @@ impl Message {
 
 fn main() {
     let messages = [
-        Message::Resize {
-            width: 10,
-            height: 30,
-        },
+        Message::Resize (Rectangle { width: 10, height: 20 }),
         Message::Move(Point { x: 10, y: 15 }),
         Message::Echo(String::from("hello world")),
-        Message::ChangeColor(200, 255, 255),
+        Message::ChangeColor((200, 255, 255)),
         Message::Quit,
     ];
 
